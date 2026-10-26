@@ -1,0 +1,3 @@
+378589c95c5a0cf690e774140d40800afd6c15aca8216a36cd8b9033d80de273 *fceux-mm3-windows.zip.part00
+b5ab56c926b1cc1a4a4ae2e14963949287c945ecf8ca1e8ede5a68bff63ccec3 *fceux-mm3-windows.zip.part01
+bf325a9381e02e30c101b4cd14557e003f0d2372b0090e3402e8365b8930ce1f *fceux-mm3-windows.zip.part02
