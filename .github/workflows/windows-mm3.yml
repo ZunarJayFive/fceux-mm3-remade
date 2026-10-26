@@ -6,6 +6,9 @@ on:
   workflow_dispatch:
   push:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-2022
@@ -39,3 +42,17 @@ jobs:
           name: fceux-mm3-windows
           path: build/bin
           if-no-files-found: error
+
+      - name: Publish the build as split files on the build-output branch
+        shell: bash
+        run: |
+          mkdir out && cd out
+          7z a -tzip fceux-mm3-windows.zip ../build/bin/* > /dev/null
+          split -b 40m -d fceux-mm3-windows.zip fceux-mm3-windows.zip.part
+          rm fceux-mm3-windows.zip
+          sha256sum * > SHA256SUMS.txt
+          git init -q -b build-output
+          git config user.name "build"; git config user.email "build@example.com"
+          git add -A; git commit -q -m "Windows build $GITHUB_SHA"
+          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f origin build-output
