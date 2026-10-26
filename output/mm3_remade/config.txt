@@ -1,0 +1,10 @@
+# MM3 Remade album settings (read when a game is loaded)
+# Album loudness 0..1, applied on top of the game's own sound effects:
+volume=0.8
+# 0 turns the album off without removing the files:
+enabled=1
+# 1 = load all tracks in the background at game load (about 0.5 GB of RAM for the full album),
+# 0 = load each track the first time the game asks for it (a short hitch the first time):
+preload=1
+# 1 = print every sound request and the track chosen to FCEUX's message log:
+verbose=0

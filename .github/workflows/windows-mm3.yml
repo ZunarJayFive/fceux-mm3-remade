@@ -1,0 +1,41 @@
+# Builds the Windows Qt/SDL version of FCEUX (the same steps as pipelines/qwin64_build.bat) on GitHub's servers.
+# Not tested by the author of this patch: if a step fails, the log shows which one.
+name: Windows (Qt) build
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Qt 6
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: '6.9.*'
+          host: windows
+          target: desktop
+          arch: win64_msvc2022_64
+          cache: true
+
+      - name: Visual Studio environment
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Build FCEUX
+        shell: cmd
+        env:
+          QT_ENV_LOADED: preinstalled
+        run: pipelines\qwin64_build.bat
+
+      - name: Add the MM3 album folder skeleton
+        shell: cmd
+        run: xcopy /E /I /Y output\mm3_remade build\bin\mm3_remade
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fceux-mm3-windows
+          path: build/bin
+          if-no-files-found: error

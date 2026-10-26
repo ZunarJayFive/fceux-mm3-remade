@@ -1,0 +1,42 @@
+# sound_id, stage($22 values, hex, separated by ';' or * for any), album track number
+# Lines starting with # are ignored. Remove the leading # on a guess line to enable it.
+00,*,02
+0E,*,03
+10,*,04
+33,*,05
+01,00,06
+01,08,17
+02,01,09
+03,02,10
+03,09,19
+04,03,11
+05,04,07
+06,05,13
+07,06,12
+07,0A,20
+08,07,08
+08,0B,18
+09,0C,23
+09,0D,24
+0A,0E,25
+0D,11,30
+0D,*,26
+0C,00;01;02;03;04;05;06;07,14
+0C,08;09;0A;0B,21
+38,*,15
+36,*,22
+35,*,16
+# Confirmed in Wily 1 and Wily 2: the boss doors send 0D (Wily Castle Boss), not 0C
+# Wily 4 (stage 0F) plays sound 0A like Wily 3 (confirmed by capture, no other music in the stage); album track 27 chosen by stage order
+0A,0F,27
+# Wily 5 and Wily 6 both send 0B; track choice by stage order (unconfirmed by ear)
+0B,10,27
+0B,11,29
+# Wily 6 boss fight sends 0D like the other Wily bosses; mapped to Gamma
+# End credits (sound 0F, confirmed by user: Proto Man's Theme)
+0F,*,31
+# Epilogue (sound 12, Wily castle ending up to the whistle scene), confirmed by user
+12,*,31
+# Wily 4 Boss Rush: first refight boss starts (A0), eighth is defeated (A1, back to the Wily 4 track)
+A0,0F,28
+A1,0F,27
